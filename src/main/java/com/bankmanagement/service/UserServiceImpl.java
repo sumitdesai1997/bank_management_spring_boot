@@ -1,6 +1,7 @@
 package com.bankmanagement.service;
 
 import java.net.URI;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,6 +41,11 @@ public class UserServiceImpl implements UserService {
 		}
 		
 		return user.get();
+	}
+
+	@Override
+	public List<User> getAllUser() {
+		return userRepository.findAll();
 	}
 
 }
