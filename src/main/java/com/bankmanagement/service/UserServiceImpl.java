@@ -48,4 +48,56 @@ public class UserServiceImpl implements UserService {
 		return userRepository.findAll();
 	}
 
+	public User createOrUpdateUser(User user) {
+		return userRepository.save(user); 
+	}
+
+	public User deleteUser(int id) {
+		Optional<User> user = userRepository.findById(id);
+		
+		if(!user.isPresent()) {
+			throw new UserNotFoundExcpetion("user with id: " + id + " not found");
+		}		
+		
+		userRepository.delete(user.get());
+		 
+		return user.get();
+	}
+
+	public User depositAmount(int id, int amount) {
+		Optional<User> user = userRepository.findById(id);
+		
+		if(!user.isPresent()) {
+			throw new UserNotFoundExcpetion("user with id: " + id + " not found");
+		}		
+		
+		int newBalance = user.get().getBalance() + amount;
+		
+		user.get().setBalance(newBalance);
+		
+		userRepository.save(user.get());
+		
+		return user.get();
+	}
+
+	public User withdrawAmount(int id, int amount) {
+		Optional<User> user = userRepository.findById(id);
+		
+		if(!user.isPresent()) {
+			throw new UserNotFoundExcpetion("user with id: " + id + " not found");
+		}		
+		
+		int newBalance = user.get().getBalance() - amount;
+		
+		if(newBalance >= 0) {
+			user.get().setBalance(newBalance);			
+		} else {
+			System.out.print("Can not withdraw amount: " + amount);
+		}
+			
+		userRepository.save(user.get());
+		
+		return user.get();
+	}
+
 }
