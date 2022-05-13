@@ -2,6 +2,8 @@ package com.bankmanagement.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,6 +20,11 @@ public class UserController {
 	@PostMapping("/user")
 	ResponseEntity<User> createUser(@RequestBody User user){
 		return userServiceImpl.createUser(user);
+	}
+	
+	@GetMapping("/user/{id}")
+	User getUser(@PathVariable int id) {
+		return userServiceImpl.getUser(id);
 	}
 	
 }

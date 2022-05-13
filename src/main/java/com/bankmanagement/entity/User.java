@@ -17,7 +17,7 @@ public class User {
 	
 	private String accType;
 	
-	private String balanace;
+	private Integer balance;
 	
 	public User() {
 		super();
@@ -47,16 +47,18 @@ public class User {
 	public void setAccType(String accType) {
 		this.accType = accType;
 	}
-	public String getBalanace() {
-		return balanace;
+	
+	public Integer getBalance() {
+		return balance;
 	}
-	public void setBalanace(String balanace) {
-		this.balanace = balanace;
+
+	public void setBalance(Integer balance) {
+		this.balance = balance;
 	}
 
 	@Override
 	public String toString() {
 		return "User [userId=" + userId + ", userName=" + userName + ", accNo=" + accNo + ", accType=" + accType
-				+ ", balanace=" + balanace + "]";
+				+ ", balance=" + balance + "]";
 	}	
 }

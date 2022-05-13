@@ -7,4 +7,6 @@ import com.bankmanagement.entity.User;
 public interface UserService {
 
 	ResponseEntity<User> createUser(User user);
+	
+	User getUser(int id);
 }
