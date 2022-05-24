@@ -9,7 +9,7 @@ public class BankManagementSpringBootApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(BankManagementSpringBootApplication.class, args);
 		
-		System.out.println("Hello");
+		System.out.println("Hello team");
 	}
 
 }
